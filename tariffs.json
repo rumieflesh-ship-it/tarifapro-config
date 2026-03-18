@@ -1,0 +1,83 @@
+{
+  "version": 5,
+  "updatedAt": "2026-03-18T12:00:00.000Z",
+  "lastSyncAt": "2026-03-18T12:00:00.000Z",
+  "syncStatus": "ok",
+  "cities": {
+    "quito": {
+      "id": "quito",
+      "nombre": "Quito",
+      "usoObligatorioTaximetro": true,
+      "tarifaMinimaDiurna": 1.45,
+      "tarifaMinimaNocturna": 1.75,
+      "costoArranque": 0.5,
+      "costoPorKmDiurno": 0.4,
+      "costoPorKmNocturno": 0.4,
+      "costoPorMinutoDiurno": 0.1,
+      "costoPorMinutoNocturno": 0.1,
+      "horarioNocturnoInicio": "19:01",
+      "horarioNocturnoFin": "05:59",
+      "entidadReguladora": "Agencia Metropolitana de Tránsito (AMT)"
+    },
+    "ambato": {
+      "id": "ambato",
+      "nombre": "Ambato",
+      "usoObligatorioTaximetro": true,
+      "tarifaMinimaDiurna": 1.2,
+      "tarifaMinimaNocturna": 1.35,
+      "costoArranque": 0.42,
+      "costoPorKmDiurno": 0.31,
+      "costoPorKmNocturno": 0.31,
+      "costoPorMinutoDiurno": 0.07,
+      "costoPorMinutoNocturno": 0.07,
+      "horarioNocturnoInicio": "19:00",
+      "horarioNocturnoFin": "06:00",
+      "entidadReguladora": "Dirección de Tránsito y Movilidad del Municipio de Ambato"
+    },
+    "loja": {
+      "id": "loja",
+      "nombre": "Loja",
+      "usoObligatorioTaximetro": true,
+      "tarifaMinimaDiurna": 1.25,
+      "tarifaMinimaNocturna": 1.4,
+      "costoArranque": 0.4,
+      "costoPorKmDiurno": 0.33,
+      "costoPorKmNocturno": 0.35,
+      "costoPorMinutoDiurno": 0.07,
+      "costoPorMinutoNocturno": 0.08,
+      "horarioNocturnoInicio": "19:01",
+      "horarioNocturnoFin": "05:59",
+      "entidadReguladora": "Municipio de Loja, a través de la UCOT (Unidad de Control Operativo de Tránsito)"
+    },
+    "cuenca": {
+      "id": "cuenca",
+      "nombre": "Cuenca",
+      "usoObligatorioTaximetro": true,
+      "tarifaMinimaDiurna": 1.39,
+      "tarifaMinimaNocturna": 1.67,
+      "costoArranque": 0.55,
+      "costoPorKmDiurno": 0.29,
+      "costoPorKmNocturno": 0.39,
+      "costoPorMinutoDiurno": 0.06,
+      "costoPorMinutoNocturno": 0.06,
+      "horarioNocturnoInicio": "19:00",
+      "horarioNocturnoFin": "06:00",
+      "entidadReguladora": "EMOV EP (Empresa Pública Municipal de Movilidad, Tránsito y Transporte de Cuenca)"
+    },
+    "riobamba": {
+      "id": "riobamba",
+      "nombre": "Riobamba",
+      "usoObligatorioTaximetro": true,
+      "tarifaMinimaDiurna": 1.45,
+      "tarifaMinimaNocturna": 1.65,
+      "costoArranque": 0.5,
+      "costoPorKmDiurno": 0.34,
+      "costoPorKmNocturno": 0.38,
+      "costoPorMinutoDiurno": 0.08,
+      "costoPorMinutoNocturno": 0.09,
+      "horarioNocturnoInicio": "19:00",
+      "horarioNocturnoFin": "06:00",
+      "entidadReguladora": "GADM Riobamba / autoridad local competente"
+    }
+  }
+}
