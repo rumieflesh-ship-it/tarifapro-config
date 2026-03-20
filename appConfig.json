@@ -1,7 +1,7 @@
 {
   "version": 3,
   "updatedAt": "2026-03-19T01:20:00.000Z",
-  "lastSyncAt": "2026-03-18T13:30:00.000Z",
+  "lastSyncAt": "2026-03-19T01:20:00.000Z",
   "syncStatus": "ok",
   "maintenance": {
     "enabled": false,
@@ -12,7 +12,7 @@
     "enabled": true,
     "title": "Configuración remota activa",
     "message": "TarifaPro ya está leyendo appConfig.json correctamente."
-  }
+  },
   "features": {
     "adsEnabled": true,
     "bannerAdsEnabled": true,
@@ -40,26 +40,11 @@
     "maxFareDifferencePct": 45
   },
   "cities": {
-    "quito": {
-      "enabled": true,
-      "visible": true
-    },
-    "ambato": {
-      "enabled": true,
-      "visible": true
-    },
-    "loja": {
-      "enabled": true,
-      "visible": true
-    },
-    "cuenca": {
-      "enabled": true,
-      "visible": true
-    },
-    "riobamba": {
-      "enabled": true,
-      "visible": true
-    }
+    "quito": { "enabled": true, "visible": true },
+    "ambato": { "enabled": true, "visible": true },
+    "loja": { "enabled": true, "visible": true },
+    "cuenca": { "enabled": true, "visible": true },
+    "riobamba": { "enabled": true, "visible": true }
   },
   "tariffs": {
     "quito": {
@@ -111,7 +96,7 @@
       "id": "cuenca",
       "nombre": "Cuenca",
       "usoObligatorioTaximetro": true,
-      "tarifaMinimaDiurna": 1.50,
+      "tarifaMinimaDiurna": 1.39,
       "tarifaMinimaNocturna": 1.67,
       "costoArranque": 0.55,
       "costoPorKmDiurno": 0.29,
