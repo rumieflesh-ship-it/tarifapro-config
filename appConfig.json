@@ -1,7 +1,7 @@
 {
-  "version": 3,
-  "updatedAt": "2026-03-19T01:20:00.000Z",
-  "lastSyncAt": "2026-03-19T01:20:00.000Z",
+  "version": 4,
+  "updatedAt": "2026-03-19T01:35:00.000Z",
+  "lastSyncAt": "2026-03-18T13:30:00.000Z",
   "syncStatus": "ok",
   "maintenance": {
     "enabled": false,
@@ -40,11 +40,26 @@
     "maxFareDifferencePct": 45
   },
   "cities": {
-    "quito": { "enabled": true, "visible": true },
-    "ambato": { "enabled": true, "visible": true },
-    "loja": { "enabled": true, "visible": true },
-    "cuenca": { "enabled": true, "visible": true },
-    "riobamba": { "enabled": true, "visible": true }
+    "quito": {
+      "enabled": true,
+      "visible": true
+    },
+    "ambato": {
+      "enabled": true,
+      "visible": true
+    },
+    "loja": {
+      "enabled": true,
+      "visible": true
+    },
+    "cuenca": {
+      "enabled": true,
+      "visible": true
+    },
+    "riobamba": {
+      "enabled": true,
+      "visible": true
+    }
   },
   "tariffs": {
     "quito": {
@@ -96,7 +111,7 @@
       "id": "cuenca",
       "nombre": "Cuenca",
       "usoObligatorioTaximetro": true,
-      "tarifaMinimaDiurna": 1.39,
+      "tarifaMinimaDiurna": 1.5,
       "tarifaMinimaNocturna": 1.67,
       "costoArranque": 0.55,
       "costoPorKmDiurno": 0.29,
