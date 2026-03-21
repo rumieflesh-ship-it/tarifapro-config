@@ -9,7 +9,7 @@
     "message": "TarifaPro estará disponible nuevamente en breve."
   },
   "globalMessage": {
-    "enabled": true,
+    "enabled": false,
     "title": "Configuración remota activa",
     "message": "TarifaPro ya está leyendo appConfig.json correctamente."
   },
