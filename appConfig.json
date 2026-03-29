@@ -112,7 +112,7 @@
       "id": "cuenca",
       "nombre": "Cuenca",
       "usoObligatorioTaximetro": true,
-      "tarifaMinimaDiurna": 1.5,
+      "tarifaMinimaDiurna": 1.50,
       "tarifaMinimaNocturna": 1.67,
       "costoArranque": 0.55,
       "costoPorKmDiurno": 0.29,
