@@ -21,7 +21,7 @@
     "sosEnabledByDefault": true,
     "historyEnabled": true,
     "remoteTariffsEnabled": true,
-    "routingEnabled": false
+    "routingEnabled": true
   },
   "ads": {
     "interstitial": {
