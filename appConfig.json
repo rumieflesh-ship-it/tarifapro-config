@@ -20,7 +20,8 @@
     "nativeAdsEnabled": true,
     "sosEnabledByDefault": true,
     "historyEnabled": true,
-    "remoteTariffsEnabled": true
+    "remoteTariffsEnabled": true,
+    "routingEnabled": false
   },
   "ads": {
     "interstitial": {
@@ -66,7 +67,7 @@
       "id": "quito",
       "nombre": "Quito",
       "usoObligatorioTaximetro": true,
-      "tarifaMinimaDiurna": 1.45,
+      "tarifaMinimaDiurna": 1.50,
       "tarifaMinimaNocturna": 1.75,
       "costoArranque": 0.5,
       "costoPorKmDiurno": 0.4,
