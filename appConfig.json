@@ -1,142 +1,315 @@
 {
-  "version": 1,
-  "updatedAt": "2026-03-19T02:00:00.000Z",
-  "lastSyncAt": "2026-03-18T13:30:00.000Z",
-  "syncStatus": "ok",
-  "maintenance": {
-    "enabled": false,
-    "title": "Mantenimiento programado",
-    "message": "TarifaPro estará disponible nuevamente en breve."
-  },
-  "globalMessage": {
-    "enabled": false,
-    "title": "Configuración remota activa",
-    "message": "TarifaPro ya está leyendo appConfig.json correctamente."
-  },
-  "features": {
-    "adsEnabled": true,
-    "bannerAdsEnabled": true,
-    "interstitialAdsEnabled": true,
-    "nativeAdsEnabled": true,
-    "sosEnabledByDefault": true,
-    "historyEnabled": true,
-    "remoteTariffsEnabled": true,
-    "routingEnabled": true
-  },
-  "ads": {
-    "interstitial": {
-      "enabled": true,
-      "minEstimates": 2,
-      "cooldownMs": 180000,
-      "maxPerDay": 6
+  "schemaVersion": 1,
+  "defaultLocale": "es",
+  "catalogUpdatedAt": "2026-03-31",
+  "engines": {
+    "distance_time_steps": {
+      "description": "Banderazo + incrementos por distancia o tiempo de espera",
+      "formula": "total = start_fee + max(distance_steps, wait_steps) * step_price + surcharges"
+    },
+    "meter_units": {
+      "description": "Cobro por unidades de taxímetro + recargos",
+      "formula": "total = max(min_fare, units * unit_price) + surcharges"
+    },
+    "minimum_plus_metered": {
+      "description": "Se cobra mínimo hasta cierto número de unidades; luego continúa por taxímetro",
+      "formula": "total = max(min_fare, units * unit_price) + surcharges"
+    },
+    "meter_plus_fixed_airport": {
+      "description": "Taxímetro normal + recargo fijo especial",
+      "formula": "total = metered_total + fixed_surcharge"
     }
   },
-  "sync": {
-    "tariffSyncIntervalMs": 1200000,
-    "configSyncIntervalMs": 900000
-  },
-  "limits": {
-    "maxRouteDistanceKm": 80,
-    "maxEstimatedMinutes": 180,
-    "maxFareDifferencePct": 45
-  },
-  "cities": {
-    "quito": {
-      "enabled": true,
-      "visible": true
+  "countries": [
+    {
+      "countryCode": "MX",
+      "countryName": "México",
+      "currency": {
+        "code": "MXN",
+        "symbol": "$",
+        "minorUnit": 2
+      },
+      "cities": [
+        {
+          "id": "mx-cdmx",
+          "name": "Ciudad de México",
+          "enabled": true,
+          "status": "verified",
+          "regulator": "Secretaría de Movilidad de la Ciudad de México (SEMOVI)",
+          "engine": "distance_time_steps",
+          "serviceType": "taxi_libre",
+          "params": {
+            "startFee": 8.74,
+            "distanceStepMeters": 250,
+            "timeStepSeconds": 45,
+            "stepPrice": 1.07,
+            "rounding": {
+              "mode": "half_up",
+              "decimals": 2
+            }
+          },
+          "surcharges": [],
+          "notes": [
+            "Para sitio/radiotaxi deben cargarse tablas separadas."
+          ],
+          "sourcesStatus": {
+            "formulaVerified": true,
+            "valuesVerified": true
+          }
+        },
+        {
+          "id": "mx-gdl",
+          "name": "Guadalajara",
+          "enabled": false,
+          "status": "needs_official_tariff_load",
+          "regulator": "Secretaría de Transporte de Jalisco",
+          "engine": "distance_time_steps",
+          "serviceType": "taxi",
+          "params": {
+            "startFee": null,
+            "distanceStepMeters": null,
+            "timeStepSeconds": null,
+            "stepPrice": null
+          },
+          "surcharges": [],
+          "notes": [
+            "Taxímetro obligatorio verificado.",
+            "No activar hasta cargar la tabla oficial vigente del AMG/Jalisco."
+          ],
+          "sourcesStatus": {
+            "formulaVerified": true,
+            "valuesVerified": false
+          }
+        }
+      ]
     },
-    "ambato": {
-      "enabled": true,
-      "visible": true
+    {
+      "countryCode": "CL",
+      "countryName": "Chile",
+      "currency": {
+        "code": "CLP",
+        "symbol": "$",
+        "minorUnit": 0
+      },
+      "cities": [
+        {
+          "id": "cl-scl",
+          "name": "Santiago",
+          "enabled": false,
+          "status": "formula_verified_values_pending",
+          "regulator": "Ministerio de Transportes y Telecomunicaciones / Seremi RM",
+          "engine": "distance_time_steps",
+          "serviceType": "taxi_basico",
+          "params": {
+            "startFee": null,
+            "distanceStepMeters": 200,
+            "timeStepSeconds": 60,
+            "stepPriceMin": 150,
+            "stepPriceMax": 200
+          },
+          "surcharges": [],
+          "notes": [
+            "La lógica regulatoria está verificada.",
+            "Cargar la resolución regional vigente para fijar el valor exacto del tramo."
+          ],
+          "sourcesStatus": {
+            "formulaVerified": true,
+            "valuesVerified": "partial"
+          }
+        },
+        {
+          "id": "cl-vap",
+          "name": "Valparaíso",
+          "enabled": false,
+          "status": "formula_verified_values_pending",
+          "regulator": "Ministerio de Transportes y Telecomunicaciones / Seremi Valparaíso",
+          "engine": "distance_time_steps",
+          "serviceType": "taxi_basico",
+          "params": {
+            "startFee": null,
+            "distanceStepMeters": 200,
+            "timeStepSeconds": 60,
+            "stepPrice": null
+          },
+          "surcharges": [],
+          "notes": [
+            "Mantener por resolución regional."
+          ],
+          "sourcesStatus": {
+            "formulaVerified": true,
+            "valuesVerified": false
+          }
+        },
+        {
+          "id": "cl-ccp",
+          "name": "Concepción",
+          "enabled": false,
+          "status": "formula_verified_values_pending",
+          "regulator": "Ministerio de Transportes y Telecomunicaciones / Seremi Biobío",
+          "engine": "distance_time_steps",
+          "serviceType": "taxi_basico",
+          "params": {
+            "startFee": null,
+            "distanceStepMeters": 200,
+            "timeStepSeconds": 60,
+            "stepPrice": null
+          },
+          "surcharges": [],
+          "notes": [
+            "Mantener por resolución regional."
+          ],
+          "sourcesStatus": {
+            "formulaVerified": true,
+            "valuesVerified": false
+          }
+        }
+      ]
     },
-    "loja": {
-      "enabled": true,
-      "visible": true
-    },
-    "cuenca": {
-      "enabled": true,
-      "visible": true
-    },
-    "riobamba": {
-      "enabled": true,
-      "visible": true
+    {
+      "countryCode": "CO",
+      "countryName": "Colombia",
+      "currency": {
+        "code": "COP",
+        "symbol": "$",
+        "minorUnit": 0
+      },
+      "cities": [
+        {
+          "id": "co-bog",
+          "name": "Bogotá",
+          "enabled": true,
+          "status": "verified",
+          "regulator": "Secretaría Distrital de Movilidad",
+          "engine": "meter_units",
+          "serviceType": "taxi",
+          "params": {
+            "unitPrice": 159,
+            "distancePerUnitMeters": 100,
+            "timePerUnitSeconds": 24,
+            "startUnits": 28,
+            "startFee": 4500,
+            "minimumUnits": 50,
+            "minimumFare": 8000
+          },
+          "surcharges": [
+            {
+              "id": "night_sunday_holiday",
+              "type": "fixed",
+              "amount": 3800,
+              "conditions": {
+                "timeRange": {
+                  "start": "20:00",
+                  "end": "05:00"
+                },
+                "or": ["sunday", "holiday"]
+              }
+            },
+            {
+              "id": "airport",
+              "type": "fixed",
+              "amount": 8000
+            },
+            {
+              "id": "door_to_door",
+              "type": "fixed",
+              "amount": 1400
+            }
+          ],
+          "sourcesStatus": {
+            "formulaVerified": true,
+            "valuesVerified": true
+          }
+        },
+        {
+          "id": "co-med",
+          "name": "Medellín",
+          "enabled": true,
+          "status": "verified",
+          "regulator": "Secretaría de Movilidad de Medellín",
+          "engine": "distance_time_steps",
+          "serviceType": "taxi_basico",
+          "params": {
+            "startFee": 5900,
+            "distanceStepMeters": 82,
+            "timeStepSeconds": 60,
+            "stepPrice": 200,
+            "minimumFare": 8300
+          },
+          "surcharges": [
+            {
+              "id": "airport_jmc",
+              "type": "fixed_trip",
+              "amount": 132000
+            }
+          ],
+          "sourcesStatus": {
+            "formulaVerified": true,
+            "valuesVerified": true
+          }
+        },
+        {
+          "id": "co-cli",
+          "name": "Cali",
+          "enabled": false,
+          "status": "values_pending_final_official_load",
+          "regulator": "Secretaría de Movilidad de Santiago de Cali",
+          "engine": "minimum_plus_metered",
+          "serviceType": "taxi_basico",
+          "params": {
+            "unitPrice": 150,
+            "distancePerUnitMeters": 80,
+            "timePerUnitSeconds": 50,
+            "startFee": 3700,
+            "minimumUnits": 48,
+            "minimumFare": 7100
+          },
+          "surcharges": [
+            {
+              "id": "night_sunday_holiday",
+              "type": "fixed",
+              "amount": 1800
+            }
+          ],
+          "notes": [
+            "Portal oficial no fue recuperable en esta sesión; confirmar contra decreto vigente antes de producción."
+          ],
+          "sourcesStatus": {
+            "formulaVerified": true,
+            "valuesVerified": "secondary_sources_only"
+          }
+        },
+        {
+          "id": "co-bga",
+          "name": "Bucaramanga",
+          "enabled": true,
+          "status": "partially_verified",
+          "regulator": "Área Metropolitana de Bucaramanga (AMB)",
+          "engine": "meter_plus_fixed_airport",
+          "serviceType": "taxi",
+          "params": {
+            "minimumFare": 7200,
+            "startFee": null,
+            "distanceStepMeters": null,
+            "timeStepSeconds": null,
+            "stepPrice": null
+          },
+          "surcharges": [
+            {
+              "id": "airport",
+              "type": "fixed_additive",
+              "amount": 21000
+            }
+          ],
+          "notes": [
+            "La página recuperada confirmó mínimo y recargo aeropuerto.",
+            "Falta cargar la granularidad de taxímetro (unidad/distancia/espera) desde el acuerdo técnico."
+          ],
+          "sourcesStatus": {
+            "formulaVerified": "partial",
+            "valuesVerified": "partial"
+          }
+        }
+      ]
     }
-  },
-  "tariffs": {
-    "quito": {
-      "id": "quito",
-      "nombre": "Quito",
-      "usoObligatorioTaximetro": true,
-      "tarifaMinimaDiurna": 1.50,
-      "tarifaMinimaNocturna": 1.75,
-      "costoArranque": 0.5,
-      "costoPorKmDiurno": 0.4,
-      "costoPorKmNocturno": 0.4,
-      "costoPorMinutoDiurno": 0.1,
-      "costoPorMinutoNocturno": 0.1,
-      "horarioNocturnoInicio": "19:01",
-      "horarioNocturnoFin": "05:59",
-      "entidadReguladora": "Agencia Metropolitana de Tránsito (AMT)"
-    },
-    "ambato": {
-      "id": "ambato",
-      "nombre": "Ambato",
-      "usoObligatorioTaximetro": true,
-      "tarifaMinimaDiurna": 1.2,
-      "tarifaMinimaNocturna": 1.35,
-      "costoArranque": 0.42,
-      "costoPorKmDiurno": 0.31,
-      "costoPorKmNocturno": 0.31,
-      "costoPorMinutoDiurno": 0.07,
-      "costoPorMinutoNocturno": 0.07,
-      "horarioNocturnoInicio": "19:00",
-      "horarioNocturnoFin": "06:00",
-      "entidadReguladora": "Dirección de Tránsito y Movilidad del Municipio de Ambato"
-    },
-    "loja": {
-      "id": "loja",
-      "nombre": "Loja",
-      "usoObligatorioTaximetro": true,
-      "tarifaMinimaDiurna": 1.25,
-      "tarifaMinimaNocturna": 1.4,
-      "costoArranque": 0.4,
-      "costoPorKmDiurno": 0.33,
-      "costoPorKmNocturno": 0.35,
-      "costoPorMinutoDiurno": 0.07,
-      "costoPorMinutoNocturno": 0.08,
-      "horarioNocturnoInicio": "19:01",
-      "horarioNocturnoFin": "05:59",
-      "entidadReguladora": "Municipio de Loja, a través de la UCOT (Unidad de Control Operativo de Tránsito)"
-    },
-    "cuenca": {
-      "id": "cuenca",
-      "nombre": "Cuenca",
-      "usoObligatorioTaximetro": true,
-      "tarifaMinimaDiurna": 1.50,
-      "tarifaMinimaNocturna": 1.67,
-      "costoArranque": 0.55,
-      "costoPorKmDiurno": 0.29,
-      "costoPorKmNocturno": 0.39,
-      "costoPorMinutoDiurno": 0.06,
-      "costoPorMinutoNocturno": 0.06,
-      "horarioNocturnoInicio": "19:00",
-      "horarioNocturnoFin": "06:00",
-      "entidadReguladora": "EMOV EP (Empresa Pública Municipal de Movilidad, Tránsito y Transporte de Cuenca)"
-    },
-    "riobamba": {
-      "id": "riobamba",
-      "nombre": "Riobamba",
-      "usoObligatorioTaximetro": true,
-      "tarifaMinimaDiurna": 1.45,
-      "tarifaMinimaNocturna": 1.65,
-      "costoArranque": 0.5,
-      "costoPorKmDiurno": 0.34,
-      "costoPorKmNocturno": 0.38,
-      "costoPorMinutoDiurno": 0.08,
-      "costoPorMinutoNocturno": 0.09,
-      "horarioNocturnoInicio": "19:00",
-      "horarioNocturnoFin": "06:00",
-      "entidadReguladora": "GADM Riobamba / autoridad local competente"
-    }
-  }
+  ]
 }
